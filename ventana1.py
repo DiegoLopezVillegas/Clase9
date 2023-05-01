@@ -1,1 +1,2 @@
-# codofocar ventana 1
+# codificar ventana 1
+
