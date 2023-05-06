@@ -1,5 +1,4 @@
 import sys
-from typing import List
 
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import Qt
@@ -382,6 +381,7 @@ class Ventana1(QMainWindow):
                     lista[8],
                     lista[9],
                     lista[10],
+                    lista[11],
                 )
 
                 # metemos el objeto en la lista de usuarios
