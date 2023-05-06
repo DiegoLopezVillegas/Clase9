@@ -11,7 +11,7 @@ from cliente import Cliente
 
 class Ventana1(QMainWindow):
     def __init__(self, parent=None):
-        super(Ventana1, self).__init__(parent)
+        super(Ventana1,self).__init__(parent)
 
         # creacion de la ventana
         self.setWindowTitle("Formulario de registro")
@@ -253,6 +253,9 @@ class Ventana1(QMainWindow):
         self.vertical.addWidget(self.opciones)
         self.ventanaDialogo.setLayout(self.vertical)
 
+        # datos correctos
+        self.datosCorrectos = True
+
     def accionLimpiar(self):
         self.nombreCompleto.setText("")
         self.usuario.setText("")
@@ -326,7 +329,9 @@ class Ventana1(QMainWindow):
                     break
             self.file.close()
 
+
     def accionBuscar(self):
+
         # ttulo ventana
         self.ventanaDialogo.setWindowTitle("Buscar preguntas de validación")
 
