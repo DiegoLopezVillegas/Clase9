@@ -11,7 +11,7 @@ from cliente import Cliente
 
 class Ventana1(QMainWindow):
     def __init__(self, parent=None):
-        super(Ventana1,self).__init__(parent)
+        super(Ventana1, self).__init__(parent)
 
         # creacion de la ventana
         self.setWindowTitle("Formulario de registro")
@@ -199,6 +199,8 @@ class Ventana1(QMainWindow):
                                           )
         self.botonRecuperar.clicked.connect(self.accionRecuperar)
 
+
+
         # Se agrega al layout derecho
         self.layoutDer_form.addRow(self.letrero3)
         self.layoutDer_form.addRow(self.letrero4)
@@ -252,7 +254,6 @@ class Ventana1(QMainWindow):
         self.vertical.addWidget(self.mensaje)
         self.vertical.addWidget(self.opciones)
         self.ventanaDialogo.setLayout(self.vertical)
-
 
 
     def accionLimpiar(self):
@@ -331,7 +332,6 @@ class Ventana1(QMainWindow):
                 if linea == '':
                     break
             self.file.close()
-
 
     def accionBuscar(self):
 
