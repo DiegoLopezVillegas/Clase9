@@ -7,9 +7,14 @@ from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QF
     QPushButton, QDialog, QDialogButtonBox, QVBoxLayout
 
 
+from cliente import Cliente
+
+
+
+
 class Ventana1(QMainWindow):
     def __init__(self, parent=None):
-        super(Ventana1, self).__init__(parent)
+        super(Ventana1,self).__init__(parent)
 
         # creacion de la ventana
         self.setWindowTitle("Formulario de registro")
@@ -161,6 +166,7 @@ class Ventana1(QMainWindow):
         self.respuesta1 = QLineEdit()
         self.respuesta1.setFixedWidth(250)
 
+
         self.respuesta2 = QLineEdit()
         self.respuesta2.setFixedWidth(250)
 
@@ -197,6 +203,45 @@ class Ventana1(QMainWindow):
                                           )
         self.botonRecuperar.clicked.connect(self.accionRecuperar)
 
+
+
+        self.respuesta2 = QLineEdit()
+        self.respuesta2.setFixedWidth(250)
+
+        self.respuesta3 = QLineEdit()
+        self.respuesta3.setFixedWidth(250)
+
+        self.respuesta4 = QLineEdit()
+        self.respuesta4.setFixedWidth(250)
+
+        self.respuesta5 = QLineEdit()
+        self.respuesta5.setFixedWidth(250)
+
+        self.respuesta6 = QLineEdit()
+        self.respuesta6.setFixedWidth(250)
+
+        # Creacion de boton buscar y recuperar
+
+        self.botonBuscar = QPushButton("Buscar")
+        self.botonBuscar.setFixedWidth(90)
+        self.botonBuscar.setStyleSheet('background-color: #008845;'
+                                       'color: #FFFFFF;'
+                                       'padding: 10px;'
+                                       'margin-top: 10px;'
+                                       )
+        self.botonBuscar.clicked.connect(self.accionBuscar)
+
+        self.botonRecuperar = QPushButton("Recuperar")
+        self.botonRecuperar.setFixedWidth(140)
+        self.botonRecuperar.setStyleSheet('background-color: #008845;'
+                                          'color: #FFFFFF;'
+                                          'padding: 10px;'
+                                          'margin-top: 10px;'
+                                          'margin-left: 50px;'
+                                          )
+        self.botonRecuperar.clicked.connect(self.accionRecuperar)
+
+
         # Se agrega al layout derecho
         self.layoutDer_form.addRow(self.letrero3)
         self.layoutDer_form.addRow(self.letrero4)
@@ -226,6 +271,8 @@ class Ventana1(QMainWindow):
         # --------Layout que almacena toda la ventana----------
         self.fondo.setLayout(self.horizontal)
 
+
+
     def accionLimpiar(self):
         self.nombreCompleto.setText("")
         self.usuario.setText("")
@@ -241,6 +288,7 @@ class Ventana1(QMainWindow):
         self.respuesta6.setText("")
 
     def accionRegistrar(self):
+
         # creamos ventana de dialogo
         self.ventanaDialogo = QDialog(None, QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowTitleHint)
         self.ventanaDialogo.resize(300, 150)
@@ -268,6 +316,27 @@ class Ventana1(QMainWindow):
 
         # datos correctos
         self.datosCorrectos = True
+
+
+    def accionLimpiar(self):
+        self.nombreCompleto.setText("")
+        self.usuario.setText("")
+        self.contrasena.setText("")
+        self.confirmar_contrasena.setText("")
+        self.documento.setText("")
+        self.correo.setText("")
+        self.respuesta1.setText("")
+        self.respuesta2.setText("")
+        self.respuesta3.setText("")
+        self.respuesta4.setText("")
+        self.respuesta5.setText("")
+        self.respuesta6.setText("")
+
+    def accionRegistrar(self):
+
+        # datos correctos
+        self.datosCorrectos = True
+
 
         # Validacion de passwords
         if (
@@ -300,7 +369,10 @@ class Ventana1(QMainWindow):
             # Abrimos el archivo en modo agregar
             self.file = open('datos/clientes.txt', 'ab')
 
+
+            # trae el texto de los Qline y los concatena
             #trae el texto de los Qline y los concatena
+
             self.file.write(bytes(self.nombreCompleto.text() + ";" +
                                   self.usuario.text() + ";" +
                                   self.contrasena.text() + ";" +
@@ -312,7 +384,11 @@ class Ventana1(QMainWindow):
                                   self.respuesta3.text() + ";" +
                                   self.respuesta4.text() + ";" +
                                   self.respuesta5.text() + ";" +
+
+                                  self.respuesta6.text() + ";" + "\n", encoding='UTF-8'))
+
                                   self.respuesta6.text() + ";" + "\n",encoding='UTF-8'))
+
             self.file.close()
 
             self.file = open('datos/clientes.txt', 'rb')
@@ -325,7 +401,100 @@ class Ventana1(QMainWindow):
 
 
     def accionBuscar(self):
-        pass
+
+
+        # ttulo ventana
+        self.ventanaDialogo.setWindowTitle("Buscar preguntas de validación")
+
+        # condicionales de campos
+        # ingresa el documento
+        if (
+                self.documento.text() == ''
+
+        ):
+            self.datosCorrectos = False
+            self.mensaje.setText("si va a buscar preguntas "
+                                 "para recuperar la contraseña.\n"
+                                 "Debe primero,ingresar el documento")
+            self.ventanaDialogo.exec_()
+
+        # documento es numerico
+
+        if (
+                not self.documento.text().isnumeric()
+        ):
+            self.datosCorrectos = False
+            self.mensaje.setText("Ingrese solo numeros en el documento")
+            self.ventanaDialogo.exec_()
+
+            self.documento.setText('')
+
+        if (
+                self.datosCorrectos
+        ):
+
+            self.file = open('datos/clientes.txt', 'rb')
+            usuarios = []
+
+            while self.file:
+                linea = self.file.readline().decode('UTF-8')
+                # obtenemos del string una lista con 11 datos separados por;
+                lista = linea.split(";")
+
+                # paramos el bucle si ya no encuentra mas registros en el archivo
+                if linea == '':
+                    break
+
+                u = Cliente(
+                    lista[0],
+                    lista[1],
+                    lista[2],
+                    lista[3],
+                    lista[4],
+                    lista[5],
+                    lista[6],
+                    lista[7],
+                    lista[8],
+                    lista[9],
+                    lista[10],
+                    lista[11],
+                )
+
+                # metemos el objeto en la lista de usuarios
+                usuarios.append(u)
+
+            # cerramos ael archivo txt
+            self.file.close()
+
+            # en este punto tenemos la lista de usuarios con todos los usuarios
+
+            existeDocumento = False
+
+            # buscamos en la lista de usuarios si existe la cedula
+
+            for u in usuarios:
+                """comparamos el documento ingresado:
+                si correspopnde con el documento, es el usuario correcto:"""
+
+                if u.documento == self.documento.text():
+                    # aqui mostramos las preguntas del formulario
+                    self.respuesta1.setText(u.respuesta1)
+                    self.respuesta2.setText(u.respuesta2)
+                    self.respuesta3.setText(u.respuesta3)
+
+                    # indicamos que existen
+                    existeDocumento = True
+
+                    break
+
+            # si no existe usuario con este documento
+            if (
+                    not existeDocumento
+            ):
+                self.mensaje.setText(f"No existe usuario con este numero"
+                                     f"de documento.{self.documento.text()}")
+                self.ventanaDialogo.exec_()
+
 
     def accionRecuperar(self):
         pass
