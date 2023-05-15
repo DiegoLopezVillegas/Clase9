@@ -12,7 +12,7 @@ from consulta_datos import Consulta_datos
 
 class Ventana1(QMainWindow):
     def __init__(self, parent=None):
-        super(Ventana1,self).__init__(parent)
+        super(Ventana1, self).__init__(parent)
 
         # creacion de la ventana
         self.setWindowTitle("Formulario de registro")
@@ -202,6 +202,7 @@ class Ventana1(QMainWindow):
 
 
 
+
         self.botonContinuar = QPushButton("Continuar")
         self.botonContinuar.setFixedWidth(90)
         self.botonContinuar.setStyleSheet('background-color: #008845;'
@@ -211,6 +212,8 @@ class Ventana1(QMainWindow):
                                           'margin-left: 0px;'
                                           )
         self.botonContinuar.clicked.connect(self.accion_botonContinuar)
+
+
 
         # Se agrega al layout derecho
         self.layoutDer_form.addRow(self.letrero3)
@@ -266,7 +269,6 @@ class Ventana1(QMainWindow):
         self.vertical.addWidget(self.mensaje)
         self.vertical.addWidget(self.opciones)
         self.ventanaDialogo.setLayout(self.vertical)
-
 
 
     def accionLimpiar(self):
@@ -343,7 +345,6 @@ class Ventana1(QMainWindow):
                 if linea == '':
                     break
             self.file.close()
-
 
     def accionBuscar(self):
 
