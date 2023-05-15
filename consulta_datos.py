@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QF
     QPushButton, QDialog, QDialogButtonBox, QVBoxLayout, QWidget, QButtonGroup, QGridLayout, QScrollArea
 
 from cliente import Cliente
+from consulta_datos_tabular import Consulta_datos_tabular
 
 
 class Consulta_datos(QMainWindow):
@@ -38,9 +39,6 @@ class Consulta_datos(QMainWindow):
         self.resize(self.imagenFondo.width(), self.imagenFondo.height())
 
         self.setCentralWidget(self.fondo)
-
-        # creacion de layout horizontal para la distribucion
-        self.vertical = QVBoxLayout()
 
         # creacion de layout horizontal para la distribucion
         self.vertical = QVBoxLayout()
@@ -148,10 +146,10 @@ class Consulta_datos(QMainWindow):
         print(cedulaUsuario)
 
     def metodo_accionTabular(self):
-        """self.hide()
+        self.hide()
         self.consulta_datos_tabular = Consulta_datos_tabular(self)
-        self.consulta_datos_tabular.show()"""
-        pass
+        self.consulta_datos_tabular.show()
+
 
     # commit clase 4 boton volver y al final otro commit con ventana 4 lista
     def metodo_botonVolver(self):

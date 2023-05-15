@@ -18,7 +18,7 @@ class Ventana1(QMainWindow):
         self.setWindowTitle("Formulario de registro")
         self.setWindowIcon(QtGui.QIcon('imagenes/mochila_clase9.jpg'))
         self.ancho = 900
-        self.alto = 600
+        self.alto = 650
         self.resize(self.ancho, self.alto)
 
         self.pantalla = self.frameGeometry()
