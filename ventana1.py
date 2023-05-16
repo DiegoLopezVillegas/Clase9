@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QF
     QPushButton, QDialog, QDialogButtonBox, QVBoxLayout
 
 from cliente import Cliente
+from consulta_datos import Consulta_datos
 
 
 class Ventana1(QMainWindow):
@@ -17,7 +18,7 @@ class Ventana1(QMainWindow):
         self.setWindowTitle("Formulario de registro")
         self.setWindowIcon(QtGui.QIcon('imagenes/mochila_clase9.jpg'))
         self.ancho = 900
-        self.alto = 600
+        self.alto = 650
         self.resize(self.ancho, self.alto)
 
         self.pantalla = self.frameGeometry()
@@ -201,6 +202,19 @@ class Ventana1(QMainWindow):
 
 
 
+
+        self.botonContinuar = QPushButton("Continuar")
+        self.botonContinuar.setFixedWidth(90)
+        self.botonContinuar.setStyleSheet('background-color: #008845;'
+                                          'color: #FFFFFF;'
+                                          'padding: 10px;'
+                                          'margin-top: 10px;'
+                                          'margin-left: 0px;'
+                                          )
+        self.botonContinuar.clicked.connect(self.accion_botonContinuar)
+
+
+
         # Se agrega al layout derecho
         self.layoutDer_form.addRow(self.letrero3)
         self.layoutDer_form.addRow(self.letrero4)
@@ -224,6 +238,7 @@ class Ventana1(QMainWindow):
         self.layoutDer_form.addRow(self.respuesta6)
 
         self.layoutDer_form.addRow(self.botonBuscar, self.botonRecuperar)
+        self.layoutDer_form.addRow(self.botonContinuar)
 
         self.horizontal.addLayout(self.layoutDer_form)
 
@@ -291,7 +306,6 @@ class Ventana1(QMainWindow):
                 self.nombreCompleto.text() == ''
                 or self.usuario.text() == ''
                 or self.contrasena.text() == ''
-                or self.confirmar_contrasena.text() == ''
                 or self.documento.text() == ''
                 or self.correo.text() == ''
                 or self.respuesta1.text() == ''
@@ -314,7 +328,6 @@ class Ventana1(QMainWindow):
             self.file.write(bytes(self.nombreCompleto.text() + ";" +
                                   self.usuario.text() + ";" +
                                   self.contrasena.text() + ";" +
-                                  self.confirmar_contrasena.text() + ";" +
                                   self.documento.text() + ";" +
                                   self.correo.text() + ";" +
                                   self.respuesta1.text() + ";" +
@@ -391,8 +404,7 @@ class Ventana1(QMainWindow):
                     lista[7],
                     lista[8],
                     lista[9],
-                    lista[10],
-                    lista[11],
+                    lista[10]
                 )
 
                 # metemos el objeto en la lista de usuarios
@@ -499,8 +511,7 @@ class Ventana1(QMainWindow):
                     lista[7],
                     lista[8],
                     lista[9],
-                    lista[10],
-                    lista[11],
+                    lista[10]
                 )
                 usuarios.append(u)
             self.file.close()
@@ -547,6 +558,10 @@ class Ventana1(QMainWindow):
 
                 self.ventanaDialogo.exec_()
 
+    def accion_botonContinuar(self):
+        self.hide()
+        self.consulta_datos = Consulta_datos(self)
+        self.consulta_datos.show()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
