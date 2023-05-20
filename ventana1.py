@@ -214,6 +214,7 @@ class Ventana1(QMainWindow):
         self.botonContinuar.clicked.connect(self.accion_botonContinuar)
 
 
+
         # Se agrega al layout derecho
         self.layoutDer_form.addRow(self.letrero3)
         self.layoutDer_form.addRow(self.letrero4)
@@ -271,12 +272,10 @@ class Ventana1(QMainWindow):
 
 
 
-
     def accionLimpiar(self):
 
         # datos correctos
         self.datosCorrectos = True
-
 
         self.nombreCompleto.setText("")
         self.usuario.setText("")
