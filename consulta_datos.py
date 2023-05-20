@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QF
 
 from cliente import Cliente
 from consulta_datos_tabular import Consulta_datos_tabular
+from crud_datos import Crud_datos
 
 
 class Consulta_datos(QMainWindow):
@@ -143,7 +144,9 @@ class Consulta_datos(QMainWindow):
         # clase 3 son dos commits al principio y al final
 
     def metodo_accionBotones(self, cedulaUsuario):
-        print(cedulaUsuario)
+        self.hide()
+        self.crud_datos = Crud_datos(self, cedulaUsuario)
+        self.crud_datos.show()
 
     def metodo_accionTabular(self):
         self.hide()
