@@ -1,5 +1,5 @@
-cristian gallego;cristiang;9807;1036680199;cristiangallego40@gmail.com;libro;año;placa;alaska;1998;exu 569;
-cristian gallego;cristiang;9807;1036680198;cristiangallego40@gmail.com;libro;año;placa;alaska;1998;exu 569;
-cristian gallego;cristiang;9807;1036680197;cristiangallego40@gmail.com;libro;año;placa;alaska;1998;exu 569;
-cristian gallego;cristiang;9807;1036680196;cristiangallego40@gmail.com;libro;año;placa;alaska;1998;exu 569;
-
+cristian gallego;cristiang;9807;1036680198;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;
+cristian gallego;cristiang;9807;1036680197;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;
+cristian gallego;cristiang;9807;1036680196;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;
+cristian gallego;cristiang;9807;1036680195;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;
+cristian gallego;cristiang;9807;1036680194;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;

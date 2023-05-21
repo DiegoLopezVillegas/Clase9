@@ -271,6 +271,7 @@ class Ventana1(QMainWindow):
         self.ventanaDialogo.setLayout(self.vertical)
 
 
+
     def accionLimpiar(self):
 
         # datos correctos
