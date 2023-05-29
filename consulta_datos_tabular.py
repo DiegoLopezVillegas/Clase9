@@ -2,11 +2,11 @@ import math
 import sys
 
 from PyQt5 import QtGui, QtCore
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap, QFont
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import QPixmap, QFont, QIcon
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QHBoxLayout, QFormLayout, QApplication, QLineEdit, \
     QPushButton, QDialog, QDialogButtonBox, QVBoxLayout, QWidget, QButtonGroup, QGridLayout, QScrollArea, QTableWidget, \
-    QTableWidgetItem
+    QTableWidgetItem, QToolBar, QAction
 
 from cliente import Cliente
 
@@ -73,6 +73,28 @@ class Consulta_datos_tabular(QMainWindow):
         self.numeroUsuarios = len(self.usuarios)
         self.contador = 0
 
+        # ---- Construccion del toolbar----
+        self.toolbar = QToolBar('Main Toolbar')
+        self.toolbar.setIconSize(QSize(25, 25))
+        self.addToolBar(self.toolbar)
+
+        # toolbar eliminar
+        self.delete = QAction(QIcon('imagenes/delete.jpg'), "&delete", self)
+        self.delete.triggered.connect(self.accion_delete)
+        self.toolbar.addAction(self.delete)
+
+        # toolbar agregar
+        self.agregar = QAction(QIcon('imagenes/agregar.png'), "&agregar", self)
+        self.agregar.triggered.connect(self.accion_agregar)
+        self.toolbar.addAction(self.agregar)
+
+        # toolbar editar
+        self.editar = QAction(QIcon('imagenes/editar.png'), "&editar", self)
+        self.editar.triggered.connect(self.acciion_editar)
+        self.toolbar.addAction(self.editar)
+
+        # ---- Fin toolbar------
+
         # hacemos los labels informativos
         self.letrero1 = QLabel()
         self.letrero1.setText("Usuario registrado")
@@ -121,9 +143,13 @@ class Consulta_datos_tabular(QMainWindow):
 
         for u in self.usuarios:
             self.tabla.setItem(self.contador, 0, QTableWidgetItem(u.nombreCompleto))
+            # evitar que se deje modificar
+            self.tabla.item(self.contador, 0).setFlags(Qt.ItemIsEnabled)
             self.tabla.setItem(self.contador, 1, QTableWidgetItem(u.usuario))
             self.tabla.setItem(self.contador, 2, QTableWidgetItem(u.contrasena))
             self.tabla.setItem(self.contador, 3, QTableWidgetItem(u.documento))
+            # evitar que se deje modificar
+            self.tabla.item(self.contador, 3).setFlags(Qt.ItemIsEnabled)
             self.tabla.setItem(self.contador, 4, QTableWidgetItem(u.correo))
             self.tabla.setItem(self.contador, 5, QTableWidgetItem(u.respuesta1))
             self.tabla.setItem(self.contador, 6, QTableWidgetItem(u.respuesta2))
@@ -161,3 +187,12 @@ class Consulta_datos_tabular(QMainWindow):
     def metodo_botonVolver(self):
         self.hide()
         self.Anterior.show()
+
+    def accion_delete(self):
+        pass
+
+    def accion_agregar(self):
+        pass
+
+    def acciion_editar(self):
+        pass
