@@ -2,4 +2,3 @@ cristian gallego;cristiang;9807;1036680198;cristiangallego40@gmail.com;libro;añ
 cristian gallego;cristiang;9807;1036680197;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;
 cristian gallego;cristiang;9807;1036680196;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;
 cristian gallego;cristiang;9807;1036680195;cristiangallego40@gmail.com;libro;año;mascotas;alaska;1998;0;
-hola;hola1;1111;159159;159@gmail.com;año;masacota;laska;1559;0;
