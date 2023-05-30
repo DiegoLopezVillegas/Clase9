@@ -163,3 +163,4 @@ class Consulta_datos(QMainWindow):
         self.hide()
         self.Anterior.show()
 
+
